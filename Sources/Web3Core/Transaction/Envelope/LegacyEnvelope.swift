@@ -172,7 +172,7 @@ extension LegacyEnvelope {
         self.nonce = nonce
         self.explicitChainID = chainID
         self.value = value
-        self.data = data
+        self.data = Data(data)
         self.gasPrice = gasPrice
         self.gasLimit = gasLimit
         self.v = v

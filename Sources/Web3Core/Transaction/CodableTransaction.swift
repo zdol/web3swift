@@ -56,7 +56,7 @@ public struct CodableTransaction {
 
     public var data: Data {
         get { return envelope.data }
-        set { envelope.data = newValue }
+        set { envelope.data = Data(newValue) }
     }
 
     // MARK: - Properties transaction type related either sends to a node if exist

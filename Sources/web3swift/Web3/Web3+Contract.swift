@@ -67,7 +67,7 @@ extension Web3 {
             }
 
             transaction.value = 0
-            transaction.data = data
+            transaction.data = Data(data)
             transaction.to = .contractDeploymentAddress()
 
             return WriteOperation(transaction: transaction,
@@ -87,7 +87,7 @@ extension Web3 {
             // MARK: - Encoding ABI Data flow
             guard let data = contract.method(method, parameters: parameters, extraData: extraData) else { return nil }
 
-            transaction.data = data
+            transaction.data = Data(data)
 
             if let network = web3.provider.network {
                 transaction.chainID = network.chainID
@@ -106,7 +106,7 @@ extension Web3 {
         /// Returns a "Transaction intermediate" object.
         public func createWriteOperation(_ method: String = "fallback", parameters: [Any] = [], extraData: Data = Data()) -> WriteOperation? {
             guard let data = contract.method(method, parameters: parameters, extraData: extraData) else { return nil }
-            transaction.data = data
+            transaction.data = Data(data)
             if let network = web3.provider.network {
                 transaction.chainID = network.chainID
             }
